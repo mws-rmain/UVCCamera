@@ -909,7 +909,7 @@ static jint nativeUpdatePanLimit(JNIEnv *env, jobject thiz,
 	if (LIKELY(camera)) {
 		int min, max, def;
 		result = camera->updatePanLimit(min, max, def);
-		if (!result) {
+		if (result != 0) {
 			// Java側へ書き込む
 			setField_int(env, thiz, "mPanMin", min);
 			setField_int(env, thiz, "mPanMax", max);
@@ -953,7 +953,7 @@ static jint nativeUpdateTiltLimit(JNIEnv *env, jobject thiz,
 	if (LIKELY(camera)) {
 		int min, max, def;
 		result = camera->updateTiltLimit(min, max, def);
-		if (!result) {
+		if (result != 0) {
 			// Java側へ書き込む
 			setField_int(env, thiz, "mTiltMin", min);
 			setField_int(env, thiz, "mTiltMax", max);
